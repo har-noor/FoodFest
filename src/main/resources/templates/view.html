@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>View Page</title>
+<link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+
+
+	<!-- FOR VENDOR -->
+	<div sec:authorize="hasRole('VENDOR')">
+		<div id="top-container">
+			<h2>View tickets</h2>
+		</div>
+		<div class=middle-container>
+			<table id="viewtable" border="1">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Day</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+				<tr th:each="bark: ${ticket}">
+					<td th:text="${bark.id}">a</td>
+					<td th:text="${bark.userName}">a</td>
+					<td th:text="${bark.eventDay}">a</td>
+					<td th:text="${bark.price}">a</td>
+					<td th:text="${bark.quantity}">a</td>
+					<td><a th:href="@{/edit/{id}(id=${bark.id})}">EDIT</a></td>
+					<td><a th:href="@{/delete/{id}(id=${bark.id})}">DELETE</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<!-- FOR GUEST -->
+	<div sec:authorize="hasRole('GUEST')">
+		<div id="top-container">
+			<h2>View tickets</h2>
+		</div>
+		<div class=middle-container>
+
+			<table id="viewtable" border="1">
+				<tr>
+					<th style="width: 14.2%">ID</th>
+					<th style="width: 14.2%">Name</th>
+					<th style="width: 14.2%">Day</th>
+					<th style="width: 14.2%">Price</th>
+					<th style="width: 14.2%">Quantity</th>
+				</tr>
+				<tr th:each="bark: ${ticket}">
+					<td th:text="${bark.id}">a</td>
+					<td th:text="${bark.userName}">a</td>
+					<td th:text="${bark.eventDay}">a</td>
+					<td th:text="${bark.price}">a</td>
+					<td th:text="${bark.quantity}">a</td>
+					<td style="width: 14.2%"><a
+						th:href="@{/edit/{id}(id=${bark.id})}">EDIT</a></td>
+					<td style="width: 14.2%"><a
+						th:href="@{/delete/{id}(id=${bark.id})}">DELETE</a></td>
+				</tr>
+
+
+			</table>
+			<br> <br>
+
+			<table id="viewtable" border="1">
+
+				<!-- SUB TOTAL -->
+				<tr th:each="t : ${total}">
+					<td style="width: 50%">Sub Total :</td>
+					<td th:text="${#numbers.formatDecimal(t.price,3,2)}"></td>
+				</tr>
+
+				<!-- TAX -->
+				<tr th:each="t : ${total}">
+					<td>Taxes(13%) :</td>
+					<td th:text="${#numbers.formatDecimal(t.price*0.13,2,2)}"></td>
+				</tr>
+
+				<!-- TOTAL -->
+				<tr th:each="t : ${total}">
+					<td>Total :</td>
+					<td th:text="${#numbers.formatDecimal(t.price+t.price*0.13,3,2)}"></td>
+				</tr>
+
+			</table>
+		</div>
+
+	</div>
+
+	<br>
+	<br>
+	<a class="btn3" href="/add">ADD</a> &emsp; &emsp;
+	<a class="btn3" href="/">HOME</a>
+
+</body>
+</html>

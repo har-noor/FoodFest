@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" href="/css/Style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Dancing+Script:wght@700&family=Passions+Conflict&family=Peralta&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+
+	<h1 id="home">
+		Welcome folks :) <br> Delicious weekend coming your way!
+	</h1>
+
+	<div th:if="${param.logout}" style="color: blue;">You have
+		successfully logged out.</div>
+
+	<h1 id="home2" class="blinking">
+		THREE-DAY <br> FOOD FESTIVAL
+	</h1>
+	<div id="tag">
+		<strong>Friday &emsp; | &emsp; Saturday &emsp; | &emsp;
+			Sunday</strong>
+	</div>
+	<br>
+
+	<br>
+	<div class="fixed">FIXED PRICE - $50 FOR ONE</div>
+	<br>
+	<br>
+
+	<!-- <div sec:authorize = "isAuthenticated()">
+	User's Name : <span sec:authentication="name"></span>
+	<br>
+	Roles: <span sec:authentication="principal.authorities"></span>
+	
+	<br>
+	
+	<br>
+</div> -->
+
+	<div>
+
+		<a class="btn3" th:href="@{/register}"> Register here!</a> <br> <br>
+		<br> <a class="btn3" th:href="@{/add}"> Add Tickets</a> &emsp; <a
+			class="btn3" th:href="@{/view}"> View Tickets</a><br> <br>
+		<br> <br>
+
+		<!-- <table id="newtable">
+			<tr>
+				<td><a class="btn3" th:href="@{/Login}"> Login</a>
+				</td>
+				<td><form th:action="@{/logout}" method="post">
+						<input id="logout" class="btn3" type="submit" value="Logout" />
+					</form>
+				</td>
+			</tr>
+		</table> -->
+		<form th:action="@{/logout}" method="post">
+			<input id="logout" class="btn3" type="submit" value="Logout" />
+		</form>
+
+	</div>
+</body>
+</html>

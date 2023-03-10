@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Edit Page</title>
+<link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+	<div id="top-container">
+		<h2>Edit a ticket</h2>
+	</div>
+
+	<div class="middle-container">
+		<form th:action="@{/editTicket}" th:object="${ticket}">
+			<table class="form">
+				<tr>
+					<td id="field">ID :</td>
+					<td><input id="input" type="text" th:field="*{id}" readonly></td>
+				</tr>
+				<tr>
+					<td id="field">Name :</td>
+					<td><input id="input" type="text" th:field="*{userName}"></td>
+				</tr>
+				<!-- <tr>
+	            	<td id = "field" >Day :</td>
+	          		<td><input id = "input" type = "text" th:field="*{eventDay}"></td>
+	       		</tr> -->
+				<tr>
+					<td id="field"><label for="eventDay">Day :</label></td>
+					<td><select id="dropinput" name="eventDay"
+						th:field="*{eventDay}">
+							<option th:each="c:*{days}" th:value="${c}" th:text="${c}">
+							</option>
+
+					</select></td>
+				</tr>
+				<tr>
+					<td id="field"><label for="price">Price :</label></td>
+					<td><select id="dropinput" name="price" th:field="*{price}">
+							<option th:each="c:*{prices}" th:value="${c}" th:text="${c}">
+							</option>
+
+					</select></td>
+				</tr>
+				<tr>
+					<td id="field">Quantity :</td>
+					<td><input id="input" type="number" name="quantity" min="1"
+						max="10" step="1" required></td>
+				</tr>
+
+
+			</table>
+			<br>
+			<br> <input id="submit" class="btn3" type=submit value="EDIT"></input>
+
+
+		</form>
+
+		<br> <a class="btn3" href="/view">VIEW</a> &emsp; &emsp; <a
+			class="btn3" href="/">HOME</a>
+
+
+	</div>
+
+
+</body>
+</html>

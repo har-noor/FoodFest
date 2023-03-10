@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Register</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+	<div id="top-container">
+		<h2>Register User</h2>
+	</div>
+
+	<div class="middle-container">
+		<form action="#" th:action="@{/register}" method="post">
+			<table class="form">
+				<tr>
+					<td id="field">Name :</td>
+					<td><input id="input" type="text" name="userName"><br>
+					</td>
+				</tr>
+				<tr>
+					<td id="field">Password :</td>
+					<td><input id="input" type="password" name="password"><br>
+					</td>
+				</tr>
+				<tr>
+					<td id="field">Age:</td>
+					<td><input id="input" type="number" name="age" required></td>
+				</tr>
+				<tr>
+					<td id="field">Residential City :</td>
+					<td><input id="input" type="text" name="city"></td>
+				</tr>
+
+				<tr>
+					<td id="field">Mobile Number :</td>
+					<td><input id="input" type="text" name="num"></td>
+				</tr>
+				<tr>
+					<td id="field"><label for="role">Role :</label></td>
+					<td><select id="dropinput" name="role">
+							<option>Guest</option>
+
+					</select></td>
+				</tr>
+			</table>
+			<br>
+			<!-- <table class="form2">
+		<tr><td><input type = "checkbox" name="admin" value="admin">
+		<label for="admin"> Admin</label><td>
+		<td><input type = "checkbox" name="member" value="member">
+		<label for="member"> Member</label><td>
+		<td><input type = "checkbox" name="guest" value="guest">
+		<label for="guest"> Guest</label><td></tr>
+		</table> -->
+			<input id="submit" class="btn3" type="submit" value="Add User">
+
+		</form>
+	</div><br><br>
+	<a class="btn3" href="/">HOME</a>
+
+</body>
+</html>
